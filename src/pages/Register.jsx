@@ -5,7 +5,7 @@ import LockIcon from "@mui/icons-material/Lock";
 import image from "../assets/regi.avif";
 import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
-import { Box } from "@mui/material";
+import { Box, TextField } from "@mui/material";
 import AuthHeader from "../components/AuthHeader";
 import AuthImage from "../components/AuthImage";
 import {Formik} from 'formik';
@@ -49,29 +49,35 @@ const Register = () => {
 
           {/*------------------------------FORMIK--------------------- */}
 
-           <Formik>
-          { () => (
-            <form onSubmit={handleSubmit}>
-            <input
-              type="email"
-              name="email"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.email}
-            />
-            {errors.email && touched.email && errors.email}
-            <input
-              type="password"
-              name="password"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.password}
-            />
-            {errors.password && touched.password && errors.password}
-            <button type="submit" disabled={isSubmitting}>
-              Submit
-            </button>
-          </form>
+           <Formik
+           initialValues={{
+            userName: '' ,
+            firstName: '' ,
+            lastName: '',
+            email: '',
+            password: '',
+          }}
+           validate={{}}
+           onSubmit={{}}
+           >
+          { ({
+         values,
+         errors,
+         touched,
+         handleChange,
+         handleBlur,
+         handleSubmit,
+         isSubmitting,
+       }) => (
+            <form action="">
+
+         <TextField 
+         name="username"
+        label="Outlined" 
+        variant="outlined" />
+
+              
+            </form>
           )}
            </Formik>
 
