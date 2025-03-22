@@ -73,8 +73,13 @@ const Register = () => {
 
          <TextField 
          name="username"
-        label="Outlined" 
-        variant="outlined" />
+        label="Username" 
+        variant="outlined" 
+        fullWidth
+        value={values.userName}
+        onChange={handleChange}
+        helperText={touched.userName && errors.userName}
+        />
 
               
             </form>
