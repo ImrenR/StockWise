@@ -5,13 +5,36 @@ import LockIcon from "@mui/icons-material/Lock";
 import image from "../assets/regi.avif";
 import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
-import { Box, TextField } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
 import AuthHeader from "../components/AuthHeader";
 import AuthImage from "../components/AuthImage";
 import {Formik} from 'formik';
+import * as Yup from 'yup';
 
 
 const Register = () => {
+  const SignupSchema = Yup.object().shape({
+    userName: Yup.string()
+      .min(2, 'Too Short!')
+      .max(50, 'Too Long!')
+      .required('Required'),
+    firstName: Yup.string()
+      .min(2, 'Too Short!')
+      .max(50, 'Too Long!')
+      .required('Required'),
+    lastName: Yup.string()
+      .min(2, 'Too Short!')
+      .max(50, 'Too Long!')
+      .required('Required'),
+    email: Yup.string().email('Invalid email').required('Required'),
+    password: Yup.string().min(8, "Not less than 8 characters")
+    .matches(/[a-z]/, "Password should contain lower letter")
+    .matches(/[A-Z]/, "Password should contain capital letter")
+    .matches(/[@$?!%&*]/, "Password should contain a special character")
+    .matches(/\+d/, "Password should contain a number")
+
+  });
+  
 
   return (
     <Container maxWidth="lg">
@@ -57,7 +80,7 @@ const Register = () => {
             email: '',
             password: '',
           }}
-           validate={{}}
+           validationSchema={{SignupSchema}}
            onSubmit={{}}
            >
           { ({
@@ -70,9 +93,9 @@ const Register = () => {
          isSubmitting,
        }) => (
 
-            <form action="">
+            <form onSubmit={handleSubmit}>
 
-         <TextField 
+         <TextField
          name="username"
         label="Username" 
         variant="outlined" 
@@ -139,9 +162,14 @@ const Register = () => {
         margin="normal"
         type="password"
               />
-            </form>
-          )}
-           </Formik>
+
+         <Button 
+         variant="contained" fullWidth type="submit">
+          SUBMIT
+          </Button>
+       </form>
+    )}
+   </Formik>
 
 
 
