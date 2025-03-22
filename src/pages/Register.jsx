@@ -5,36 +5,34 @@ import LockIcon from "@mui/icons-material/Lock";
 import image from "../assets/regi.avif";
 import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
-import { Box, Button, TextField } from "@mui/material";
 import AuthHeader from "../components/AuthHeader";
 import AuthImage from "../components/AuthImage";
-import {Formik} from 'formik';
-import * as Yup from 'yup';
-
+import { Formik } from "formik";
+import * as Yup from "yup";
+import RegisterForm from "../components/RegisterForm";
 
 const Register = () => {
   const SignupSchema = Yup.object().shape({
     userName: Yup.string()
-      .min(2, 'Too Short!')
-      .max(50, 'Too Long!')
-      .required('Required'),
+      .min(2, "Too Short!")
+      .max(50, "Too Long!")
+      .required("Required"),
     firstName: Yup.string()
-      .min(2, 'Too Short!')
-      .max(50, 'Too Long!')
-      .required('Required'),
+      .min(2, "Too Short!")
+      .max(50, "Too Long!")
+      .required("Required"),
     lastName: Yup.string()
-      .min(2, 'Too Short!')
-      .max(50, 'Too Long!')
-      .required('Required'),
-    email: Yup.string().email('Invalid email').required('Required'),
-    password: Yup.string().min(8, "Not less than 8 characters")
-    .matches(/[a-z]/, "Password should contain lower letter")
-    .matches(/[A-Z]/, "Password should contain capital letter")
-    .matches(/[@$?!%&*]/, "Password should contain a special character")
-    .matches(/\+d/, "Password should contain a number")
-
+      .min(2, "Too Short!")
+      .max(50, "Too Long!")
+      .required("Required"),
+    email: Yup.string().email("Invalid email").required("Required"),
+    password: Yup.string()
+      .min(8, "Not less than 8 characters")
+      .matches(/[a-z]/, "Password should contain lower letter")
+      .matches(/[A-Z]/, "Password should contain capital letter")
+      .matches(/[@$?!%&*]/, "Password should contain a special character")
+      .matches(/\+d/, "Password should contain a number"),
   });
-  
 
   return (
     <Container maxWidth="lg">
@@ -72,106 +70,20 @@ const Register = () => {
 
           {/*------------------------------FORMIK--------------------- */}
 
-           <Formik
-           initialValues={{
-            userName: '' ,
-            firstName: '' ,
-            lastName: '',
-            email: '',
-            password: '',
-          }}
-           validationSchema={{SignupSchema}}
-           onSubmit={{}}
-           >
-          { ({
-         values,
-         errors,
-         touched,
-         handleChange,
-         handleBlur,
-         handleSubmit,
-         isSubmitting,
-       }) => (
-
-            <form onSubmit={handleSubmit}>
-
-         <TextField
-         name="username"
-        label="Username" 
-        variant="outlined" 
-        fullWidth
-        value={values.userName}
-        onChange={handleChange}
-        error={touched.userName && errors.userName}
-        helperText={touched.userName && errors.userName}
-        onBlur={handleBlur} 
-        margin="normal"
-        />
-   <TextField 
-         name="firstName"
-        label="Firstname" 
-        variant="outlined" 
-        fullWidth
-        value={values.firstName}
-        onChange={handleChange}
-        error={touched.firstName && errors.firstName}
-        helperText={touched.firstName && errors.firstName}
-        onBlur={handleBlur}
-        margin="normal" 
-
-        />
-
-
-<TextField 
-         name="lastName"
-        label="lastname" 
-        variant="outlined" 
-        fullWidth
-        value={values.lastName}
-        onChange={handleChange}
-        error={touched.lastName && errors.lastName}
-        helperText={touched.lastName && errors.lastName}
-        onBlur={handleBlur} 
-        margin="normal"
-              />
-
-<TextField 
-         name="email"
-        label="email" 
-        variant="outlined" 
-        fullWidth
-        value={values.email}
-        onChange={handleChange}
-        error={touched.email && errors.email}
-        helperText={touched.email && errors.email}
-        onBlur={handleBlur} 
-        margin="normal"
-        type="email"
-              />
-
-<TextField 
-         name="password"
-        label="password" 
-        variant="outlined" 
-        fullWidth
-        value={values.password}
-        onChange={handleChange}
-        error={touched.password && errors.password}
-        helperText={touched.password && errors.password}
-        onBlur={handleBlur} 
-        margin="normal"
-        type="password"
-              />
-
-         <Button 
-         variant="contained" fullWidth type="submit">
-          SUBMIT
-          </Button>
-       </form>
-    )}
-   </Formik>
-
-
+          <Formik
+            initialValues={{
+              userName: "",
+              firstName: "",
+              lastName: "",
+              email: "",
+              password: "",
+            }}
+            validationSchema={{ SignupSchema }}
+            onSubmit={(values) => {
+              console.log(values);
+            }}
+            component={(props) => <RegisterForm {...props} />}
+          />
 
           <Box sx={{ textAlign: "center", mt: 2, color: "secondary.main" }}>
             <Link to="/">Already have an account? Sign in</Link>
