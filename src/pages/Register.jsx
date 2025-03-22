@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { Box } from "@mui/material";
 import AuthHeader from "../components/AuthHeader";
 import AuthImage from "../components/AuthImage";
+import {Formik} from 'formik';
 
 
 const Register = () => {
@@ -45,7 +46,37 @@ const Register = () => {
           >
             Register
           </Typography>
-          
+
+          {/*------------------------------FORMIK--------------------- */}
+
+           <Formik>
+          { () => (
+            <form onSubmit={handleSubmit}>
+            <input
+              type="email"
+              name="email"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.email}
+            />
+            {errors.email && touched.email && errors.email}
+            <input
+              type="password"
+              name="password"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.password}
+            />
+            {errors.password && touched.password && errors.password}
+            <button type="submit" disabled={isSubmitting}>
+              Submit
+            </button>
+          </form>
+          )}
+           </Formik>
+
+
+
           <Box sx={{ textAlign: "center", mt: 2, color: "secondary.main" }}>
             <Link to="/">Already have an account? Sign in</Link>
           </Box>
