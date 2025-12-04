@@ -41,3 +41,59 @@ src
 ├─ AppRouter.jsx
 └─ PrivateRouter.jsx
 ```
+
+
+---
+
+##  Features
+
+###  Authentication
+- Register & Login functionality
+- Form validation using Yup
+- Password requirements enforced
+- Auth state stored using Redux Toolkit
+
+###  Form Handling
+- Inputs managed via Formik
+- Field-level and schema-level error handling
+- Real-time error messages
+
+###  Protected Routes
+- Only authenticated users access dashboard
+- Implemented through `PrivateRouter`
+
+###  Redux State Flow
+- Auth state inside `authSlice.jsx`
+- Dispatch actions from form components
+- Access state in `AppRouter.jsx`
+
+---
+
+##  Pages
+
+| Page | Description |
+|--------|-------------|
+| `Register.jsx` | New user registration with Yup validation |
+| `Login.jsx` | User authentication |
+| `Dashboard.jsx` | Protected area after login |
+
+---
+
+##  How to Run
+
+
+pnpm install
+pnpm run dev
+
+
+---
+
+## Future Enhancements
+
+- Add API integration for product CRUD
+
+- Add stock listing page
+
+- Add search & filter options
+
+- Add user roles
