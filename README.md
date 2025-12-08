@@ -1,99 +1,16 @@
-#  Stock Management App - StockWise
+# React + Vite
 
-A full-featured Stock Management application built with React, Redux Toolkit, Formik, and Yup.  
-This project demonstrates authentication, form validation, protected routes, reusable components, and state management in a clean folder structure.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
----
+Currently, two official plugins are available:
 
-##  Tech Stack
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-### Frontend
--  React + Vite
--  Redux Toolkit (authSlice)
--  Formik for form control
--  Yup for validation schema
--  Toastify for notifications
--  Private route protection
+## React Compiler
 
----
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-##  Project Structure Overview
+## Expanding the ESLint configuration
 
-```
-src
-├─ app/
-│ └─ store.jsx
-├─ assets/
-├─ components/
-│ ├─ AuthHeader.jsx
-│ ├─ AuthImage.jsx
-│ ├─ ErrorBoundary.jsx
-│ └─ RegisterForm.jsx
-├─ features/
-│ └─ authSlice.jsx
-├─ helper/
-│ └─ ToastNotify.js
-├─ pages/
-│ ├─ Dashboard.jsx
-│ ├─ Login.jsx
-│ └─ Register.jsx
-└─ router/
-├─ AppRouter.jsx
-└─ PrivateRouter.jsx
-```
-
-
----
-
-##  Features
-
-###  Authentication
-- Register & Login functionality
-- Form validation using Yup
-- Password requirements enforced
-- Auth state stored using Redux Toolkit
-
-###  Form Handling
-- Inputs managed via Formik
-- Field-level and schema-level error handling
-- Real-time error messages
-
-###  Protected Routes
-- Only authenticated users access dashboard
-- Implemented through `PrivateRouter`
-
-###  Redux State Flow
-- Auth state inside `authSlice.jsx`
-- Dispatch actions from form components
-- Access state in `AppRouter.jsx`
-
----
-
-##  Pages
-
-| Page | Description |
-|--------|-------------|
-| `Register.jsx` | New user registration with Yup validation |
-| `Login.jsx` | User authentication |
-| `Dashboard.jsx` | Protected area after login |
-
----
-
-##  How to Run
-
-
-pnpm install
-pnpm run dev
-
-
----
-
-## Future Enhancements
-
-- Add API integration for product CRUD
-
-- Add stock listing page
-
-- Add search & filter options
-
-- Add user roles
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
